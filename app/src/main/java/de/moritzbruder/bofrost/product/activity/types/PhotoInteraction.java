@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -33,6 +34,7 @@ public class PhotoInteraction extends UserInteraction.InteractionType {
         Log.d("PhotoInteraction", "it is");
         LayoutInflater inflater = LayoutInflater.from(c);
         View v = inflater.inflate(R.layout.interaction_photo, null, false);
+        ((TextView) v.findViewById(R.id.textViewChallenge)).setText(data);
         Picasso.with(c).load(image).into((ImageView) v.findViewById(R.id.imageViewChallenge));
         Log.d("image", image);
         return v;

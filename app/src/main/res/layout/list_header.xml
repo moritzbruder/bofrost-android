@@ -7,11 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView android:id="@+id/imageViewProductThumbnail"
-            android:background="#0066ff"
+        <View android:id="@+id/ThumbnailSpacer"
+            android:background="#00000000"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"/>
+            android:layout_height="250dp"/>
 
         <ImageView android:src="@drawable/gradient"
             android:alpha="0.4"
@@ -21,16 +20,59 @@
 
     </RelativeLayout>
 
-    <TextView android:id="@+id/textViewProductName"
+    <ImageView android:id="@+id/headerTop"
+        android:src="@drawable/header_top"
         android:layout_below="@id/detailLayout"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginBottom="16dp"
-        android:textSize="24dp"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_marginTop="-25dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
+
+    <LinearLayout android:layout_below="@+id/headerTop"
+        android:background="@color/bofrost_red"
+        android:id="@+id/titleLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/textViewProductName"
+            android:text="Fischlettis"
+            android:elevation="1dp"
+            android:layout_below="@id/detailLayout"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="24dp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView android:id="@+id/textViewDescription"
+            android:textSize="14dp"
+            android:textColor="#fff"
+            android:layout_marginLeft="24dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <ImageView android:id="@+id/headerBottom"
+        android:src="@drawable/header_bottom"
+        android:background="#ffffff"
+        android:layout_below="@id/titleLayout"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
+
+
 
 </RelativeLayout>

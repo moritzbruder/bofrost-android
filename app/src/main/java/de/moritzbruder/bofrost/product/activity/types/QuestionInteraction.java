@@ -34,6 +34,13 @@ public class QuestionInteraction extends UserInteraction.InteractionType {
         TextView question = (TextView) v.findViewById(R.id.textViewQuestion);
         TextView answer = (TextView) v.findViewById(R.id.textViewAnswer);
 
+        String[] split = data.split("\\|");
+        String q = split[0];
+        String a = split[1];
+
+        question.setText(q);
+        answer.setText(a);
+
         answer.setTypeface(myTypeface);
 
         return v;

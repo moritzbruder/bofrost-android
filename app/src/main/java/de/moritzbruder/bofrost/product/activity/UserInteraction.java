@@ -1,6 +1,7 @@
 package de.moritzbruder.bofrost.product.activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,29 +53,34 @@ public class UserInteraction {
     String data;
     String image;
 
-    public View getView (boolean friendHighlighted, SpecialTheme theme, Context context) {
+    public View getView (boolean listEnd, boolean friendHighlighted, SpecialTheme theme, Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.list_item_user_interaction, null, false);
         FrameLayout content = (FrameLayout) v.findViewById(R.id.contentView);
         content.addView(getViewRepresentation(data, friendHighlighted, theme, context));
         UserView userView = (UserView) v.findViewById(R.id.userView);
         userView.setUser(userid, context);
+        if (listEnd) v.findViewById(R.id.lineEnder).setVisibility(View.VISIBLE);
 
         return v;
     }
 
     private View getViewRepresentation (String data, boolean friendHighlighted, SpecialTheme theme, Context context) {
+        View v = new View(context);
+
         if (PhotoInteraction.shared.is(type)) {
-            return PhotoInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
+            v = PhotoInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
         } else if (CombineInteraction.shared.is(type)) {
-            return CombineInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
+            v = CombineInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
         } else if (QuestionInteraction.shared.is(type)) {
-            return QuestionInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
+            v = QuestionInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
         } else if (FavoriteInteraction.shared.is(type)) {
-            return FavoriteInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
+            v = FavoriteInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
         }
 
-        return new View(context);
+        v.setBackgroundColor(Color.TRANSPARENT);
+
+        return v;
     }
 
 }

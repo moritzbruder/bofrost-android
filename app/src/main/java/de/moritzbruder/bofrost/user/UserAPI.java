@@ -1,5 +1,7 @@
 package de.moritzbruder.bofrost.user;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -11,5 +13,8 @@ public interface UserAPI {
 
     @GET("/user/{id}")
     Call<User> getUser(@Path("id") String userId);
+
+    @GET("/leaderboard")
+    Call<List<User>> getLeaderboard();
 
 }

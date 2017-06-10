@@ -4,13 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.moritzbruder.bofrost.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:elevation="10dp"
+        android:id="@+id/toolbar"
+        android:background="@color/bofrost_blue"
+        android:titleTextColor="#fff"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize" />
+
     <RelativeLayout android:id="@+id/levelLayout"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -20,7 +26,8 @@
             android:layout_height="200dp"
             app:cpb_progressbar_width="5dp"
             app:cpb_progressbar_color="@color/bofrost_red"
-            app:cpb_background_progressbar_color="#00000000"
+            app:cpb_background_progressbar_color="#F2F2F2"
+            app:cpb_background_progressbar_width="5dp"
             app:cpb_progress="73"
             android:layout_centerHorizontal="true" />
 
@@ -65,8 +72,9 @@
         android:layout_height="wrap_content"
         android:elevation="10dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:padding="8dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -74,15 +82,63 @@
                 android:textColor="@color/bofrost_blue"
                 android:id="@+id/titleCollectPoints"
                 android:gravity="center"
+                android:layout_marginBottom="12dp"
                 android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <LinearLayout android:id="@+id/questionButton"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:background="@drawable/quote_bg"
+                android:padding="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                
+                <de.hdodenhof.circleimageview.CircleImageView android:src="@drawable/action_question"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp" />
+
+                <TextView android:text="Frage beantworten"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/challengeButton"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:background="@drawable/quote_bg"
+                android:padding="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView android:src="@drawable/action_challenge"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp" />
+
+                <TextView android:text="Challenge absolvieren"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
 
             <View android:background="#00000000"
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

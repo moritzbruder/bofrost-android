@@ -44,6 +44,9 @@ public class ProductActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         setTitle("");
 
         final String productId = "644";//getIntent().getExtras().getString(KEY_PRODUCT_ID);
@@ -59,6 +62,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 product = response.body();
+                Picasso.with(ProductActivity.this).load(product.getImageUrl()).into(((ImageView) findViewById(R.id.imageViewProductThumbnail)));
             }
 
             @Override

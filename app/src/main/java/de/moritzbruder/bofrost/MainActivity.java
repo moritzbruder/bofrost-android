@@ -1,9 +1,15 @@
 package de.moritzbruder.bofrost;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
@@ -31,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+
+        toolbar.setTitleTextColor(Color.WHITE);
+
         textViewLevel = (TextView) findViewById(R.id.textViewLevel);
         textViewPoints2Levelup = (TextView) findViewById(R.id.textViewPoints2Levelup);
         progress = (CircularProgressBar) findViewById(R.id.progressBarLevels);
@@ -56,6 +68,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        findViewById(R.id.questionButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Woohoo, los geht's!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, QuestionActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.scoreboard) {
+            startActivity(new Intent(MainActivity.this, LeaderboardActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void setUser(User user) {

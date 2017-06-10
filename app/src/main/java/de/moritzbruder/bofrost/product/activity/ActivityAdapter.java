@@ -78,8 +78,8 @@ public class ActivityAdapter extends BaseAdapter {
                     Product product = response.body();
                     if (product != null) {
                         ((TextView) v.findViewById(R.id.textViewProductName)).setText(product.getName());
+                        ((TextView) v.findViewById(R.id.textViewDescription)).setText(product.getDescription());
                         Log.d("image", product.getImageUrl());
-                        Picasso.with(context).load("http://ais.kochbar.de/kbrezept/509560_871200/1500x1500/rosmarin-kartoffeln--rezept-bild-nr-231.jpg").into((ImageView) v.findViewById(R.id.imageViewProductThumbnail));
                     }
                 }
 
@@ -90,6 +90,6 @@ public class ActivityAdapter extends BaseAdapter {
             });
 
             return v;
-        } else return ((UserInteraction) list.get(i)).getView(false, null, context);
+        } else return ((UserInteraction) list.get(i)).getView((i+1) == list.size(), false, null, context);
     }
 }
