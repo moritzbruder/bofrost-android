@@ -31,6 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ActivityAdapter extends BaseAdapter {
 
     String header = "HEADER";
+    String footer = "FOOTER";
 
     List<Object> list;
     Context context;
@@ -40,6 +41,7 @@ public class ActivityAdapter extends BaseAdapter {
         list = new ArrayList<Object>();
         list.add(header);
         list.addAll(interactions);
+        list.add(footer);
         this.context = context;
         this.productId = productId;
     }
@@ -90,6 +92,11 @@ public class ActivityAdapter extends BaseAdapter {
             });
 
             return v;
-        } else return ((UserInteraction) list.get(i)).getView((i+1) == list.size(), false, null, context);
+        } else if (list.get(i) == footer) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            final View v = inflater.inflate(R.layout.list_item_foot, null, false);
+
+            return v;
+        } else return ((UserInteraction) list.get(i)).getView((i + 2) == list.size(), false, null, context);
     }
 }

@@ -16,6 +16,7 @@ import de.moritzbruder.bofrost.product.activity.types.CombineInteraction;
 import de.moritzbruder.bofrost.product.activity.types.FavoriteInteraction;
 import de.moritzbruder.bofrost.product.activity.types.PhotoInteraction;
 import de.moritzbruder.bofrost.product.activity.types.QuestionInteraction;
+import de.moritzbruder.bofrost.product.activity.types.RecipeInteraction;
 import de.moritzbruder.bofrost.user.User;
 import de.moritzbruder.bofrost.user.UserView;
 
@@ -76,6 +77,8 @@ public class UserInteraction {
             v = QuestionInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
         } else if (FavoriteInteraction.shared.is(type)) {
             v = FavoriteInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
+        } else if (RecipeInteraction.shared.is(type)) {
+            v = RecipeInteraction.shared.getViewRepresentation(this, data, image, friendHighlighted, theme, context);
         }
 
         v.setBackgroundColor(Color.TRANSPARENT);

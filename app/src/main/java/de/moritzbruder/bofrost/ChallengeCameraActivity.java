@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
@@ -154,6 +155,12 @@ public class ChallengeCameraActivity extends AppCompatActivity {
             createCameraPreview();
         }
     };
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) onBackPressed();
+        return true;
+    }
 
     protected void startBackgroundThread() {
         mBackgroundThread = new HandlerThread("Camera Background");

@@ -1,6 +1,7 @@
 package de.moritzbruder.bofrost.product.activity.types;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import de.moritzbruder.bofrost.ProductActivity;
 import de.moritzbruder.bofrost.R;
 import de.moritzbruder.bofrost.layout.SpecialTheme;
 import de.moritzbruder.bofrost.product.Product;
@@ -35,7 +37,7 @@ public class CombineInteraction extends UserInteraction.InteractionType {
     }
 
     @Override
-    public View getViewRepresentation(final UserInteraction interaction, String data, String image, boolean friendHighlighted, SpecialTheme theme, Context context) {
+    public View getViewRepresentation(final UserInteraction interaction, String data, String image, boolean friendHighlighted, SpecialTheme theme, final Context context) {
         Log.d("CombineInteraction", "it is");
         LayoutInflater inflater = LayoutInflater.from(context);
         final View v = inflater.inflate(R.layout.interaction_combine, null, false);
@@ -56,6 +58,16 @@ public class CombineInteraction extends UserInteraction.InteractionType {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         ((TextView) v.findViewById(R.id.textViewCaption)).setText("Schon probiert? " + response.body().getName() + " kombiniert seine " + interaction.getInteractionProduct().getName() + " mit " + combiner.getName() + "!");
+                        ((TextView) v.findViewById(R.id.textViewPreview)).setText(combiner.getName());
+                        Picasso.with(context).load(combiner.getImageUrl()).into((ImageView) v.findViewById(R.id.imageViewPreview));
+                        v.findViewById(R.id.productLink).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent i = new Intent(context, ProductActivity.class);
+                                i.putExtra(ProductActivity.KEY_PRODUCT_ID, combiner.getId());
+                                context.startActivity(i);
+                            }
+                        });
                     }
 
                     @Override

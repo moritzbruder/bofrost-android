@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
@@ -49,7 +50,11 @@ public class ProductActivity extends AppCompatActivity {
 
         setTitle("");
 
-        final String productId = "644";//getIntent().getExtras().getString(KEY_PRODUCT_ID);
+        Bundle extras = getIntent().getExtras();
+        String loaded = "644";
+        if (extras != null) loaded = extras.getString(KEY_PRODUCT_ID);
+
+        final String productId = loaded;
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.178.28:8000/")
@@ -104,6 +109,12 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) onBackPressed();
+        return true;
     }
 
     @Override

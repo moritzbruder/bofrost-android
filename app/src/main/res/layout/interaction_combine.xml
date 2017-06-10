@@ -13,8 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout android:background="@drawable/quote_bg"
-        android:layout_marginTop="12dp"
+    <LinearLayout android:id="@+id/productLink"
+        android:background="@drawable/quote_bg"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_marginLeft="16dp"
         android:padding="8dp"
         android:layout_width="wrap_content"
@@ -25,8 +27,11 @@
             android:layout_height="40dp" />
 
         <TextView android:id="@+id/textViewPreview"
-            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
             android:text="bofrost*-Produkt"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         

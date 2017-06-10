@@ -11,6 +11,7 @@ public class Product {
     String name;
     @SerializedName("image")
     String imageUrl;
+    String id;
 
     public String getDescription() {
         return description;
@@ -22,5 +23,9 @@ public class Product {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getId() {
+        return id;
     }
 }

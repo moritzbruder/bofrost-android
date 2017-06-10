@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#00000000"
+    android:layout_height="match_parent">
+
+    <TextView android:id="@+id/textViewCaption"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView android:id="@+id/textViewRecipe"
+        android:layout_marginTop="4dp"
+        android:text="Schritt 1\nSchritt 2\nFertig!"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
