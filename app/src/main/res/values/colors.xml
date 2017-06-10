@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/bofrost_blue</color>
+    <color name="colorPrimaryDark">@color/bofrost_blue_dark</color>
+    <color name="colorAccent">@color/bofrost_red</color>
+
+    <!--bofrost colors-->
+    <color name="bofrost_blue">#162677</color>
+    <color name="bofrost_blue_light">#36489f</color>
+    <color name="bofrost_blue_dark">#06155F</color>
+    <color name="bofrost_red">#d10018</color>
+
+
+    <color name="white">#FFF</color>
 </resources>

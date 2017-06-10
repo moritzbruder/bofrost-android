@@ -1,7 +1,15 @@
 package de.moritzbruder.bofrost.user;
 
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
 /**
  * Created by morit on 10.06.2017.
  */
-public class UserAPI {
+public interface UserAPI {
+
+    @GET("/user/{id}")
+    Call<User> getUser(@Path("id") String userId);
+
 }
